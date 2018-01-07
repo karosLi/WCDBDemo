@@ -13,9 +13,7 @@
 
 #pragma mark - public methods
 + (void)setupDatabase {
-    dispatch_async([self serialQueque], ^{
-        [DBEngine setupDatabase];
-    });
+    [DBEngine setupDatabase];
 }
 
 + (dispatch_queue_t)serialQueque {

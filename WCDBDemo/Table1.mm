@@ -26,15 +26,11 @@ WCDB_PRIMARY_AUTO_INCREMENT(Table1, dd)
 
 #pragma mark - DBEngineTableDelegate
 + (void)dbEngine:(DBEngine *)dbEngine didSetupDatabase:(WCTDatabase *)database {
-    dispatch_async([DBManager serialQueque], ^{
-        [[DBEngine sharedDatabase] createTableAndIndexesOfName:NSStringFromClass(self.class) withClass:self.class];
-    });
+    [[DBEngine sharedDatabase] createTableAndIndexesOfName:NSStringFromClass(self.class) withClass:self.class];
 }
 
 + (void)load {
-    dispatch_async([DBManager concurrentQueque], ^{
-        [DBEngine registerTable:self];
-    });
+    [DBEngine registerTable:self];
 }
 
 
